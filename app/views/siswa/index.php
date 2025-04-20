@@ -16,9 +16,10 @@
 
             <ul class="list-group">
                 <?php foreach ($data['siswa'] as $siswa) : ?>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <li class="list-group-item">
                         <?= $siswa['nama'] ?>
-                        <a href="<?= BASEURL; ?>/siswa/detail/<?= $siswa['id'] ?>" class="btn badge btn-primary" style="text-decoration: none;">Detail</a>
+                        <a href="<?= BASEURL; ?>/siswa/hapus/<?= $siswa['id'] ?>" class="btn badge btn-danger float-end ms-1 btn-hapus" id="btn-hapus" style="text-decoration: none;">Hapus</a>
+                        <a href="<?= BASEURL; ?>/siswa/detail/<?= $siswa['id'] ?>" class="btn badge btn-primary float-end ms-1" style="text-decoration: none;">Detail</a>
                     </li>
                 <?php endforeach; ?>
             </ul>

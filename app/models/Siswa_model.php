@@ -1,6 +1,7 @@
 <?php
 
-class Siswa_model {
+class Siswa_model
+{
     private $table = 'siswa';
     private $db;
 
@@ -9,18 +10,21 @@ class Siswa_model {
         $this->db = new Database;
     }
 
-    public function getAllSiswa() {
+    public function getAllSiswa()
+    {
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultSet();
     }
 
-    public function getSiswaById($id) {
+    public function getSiswaById($id)
+    {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
         $this->db->bind('id', $id);
         return $this->db->single();
     }
 
-    public function tambahDataSiswa($data) {
+    public function tambahDataSiswa($data)
+    {
         $query = "INSERT INTO siswa
                     VALUES
                     ('', :nama, :nisn, :email, :jurusan)";
@@ -34,5 +38,16 @@ class Siswa_model {
         $this->db->execute();
 
         return $this->db->rowCount();
-        }
+    }
+
+    public function hapusDataSiswa($id)
+    {
+        $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }
